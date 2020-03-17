@@ -1,0 +1,22 @@
+{% extends "home/main/main.html" %}
+{% load static %}
+{% block content %}
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="title-section mb-5 col-12">
+        <h2 class="text-uppercase">Popular Products</h2>
+      </div>
+      {% for item in cat.item_set.all %}
+        <div class="col-lg-4 col-md-6 item-entry mb-4" >
+          <a href=" {{item.get_absolute_url}}" class="product-item md-height bg-gray d-block">
+            <img src='{{item.image.url}}' alt="Image" class="img-fluid">
+          </a>
+          <h2 class="item-title"><a href="{{item.get_absolute_url}}" >{{item.title}}</a></h2>
+          <strong class="item-price">{{item.price}}</strong>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

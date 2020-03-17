@@ -1,0 +1,81 @@
+{% extends "home/main/main.html" %}
+{% load static %}
+{% block content %}
+<!-- header here -->
+<div class="site-blocks-cover" data-aos="fade">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 ml-auto order-md-2 align-self-start">
+        <div class="site-block-cover-content">
+        <h2 class="sub-title">#New Summer Collection 2019</h2>
+        <h1>Arrivals Sales</h1>
+        <p><a href="{% url 'shop' %}" class="btn btn-black rounded-0">Shop Now</a></p>
+        </div>
+      </div>
+      <div class="col-md-6 order-1 align-self-end">
+        <img src="{% static 'images/model_3.png' %}" alt="Image" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- banner here -->
+    <div class="site-section">
+      <div class="container">
+        <div class="title-section mb-5">
+          <h2 class="text-uppercase"><span class="d-block">Discover</span> The Collections</h2>
+        </div>
+        <div class="row align-items-stretch">
+          {% for item in cat %}
+            {% if item.id == 4 %}
+              <div class="col-lg-8">
+                <div class="product-item sm-height full-height bg-gray">
+                  <a href="{% url 'productOfCat' item.id %}" class="product-category">{{item.nameProduct}} </a>
+                  <img src="{% static 'images/model_4.png' %}" alt="Image" class="img-fluid">
+                </div>
+              </div>
+            {% endif %}
+            {% if item.id == 5  %}
+              <div class="col-lg-4">
+                <div class="product-item sm-height bg-gray mb-4">
+                  <a href="{% url 'productOfCat' item.id %}" class="product-category">{{item.nameProduct}} </a>
+                  <img src="{% static 'images/model_5.png' %}" alt="Image" class="img-fluid">
+                </div>
+            {% endif %}
+            {% if item.id == 6 %}
+              <div class="product-item sm-height bg-gray">
+                <a href="{% url 'productOfCat' item.id %}" class="product-category">{{item.nameProduct}} </a>
+                <img src="{% static 'images/model_6.png' %}" alt="Image" class="img-fluid">
+              </div>
+            {% endif %}
+          {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Popular Products -->
+
+
+
+
+    <div class="site-blocks-cover inner-page py-5" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto order-md-2 align-self-start">
+            <div class="site-block-cover-content">
+            <h2 class="sub-title">#New Summer Collection 2019</h2>
+            <h1>New Shoes</h1>
+            <p><a href="{% url 'shop' %}" class="btn btn-black rounded-0">Shop Now</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 order-1 align-self-end">
+            <img src="images/model_6.png" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- section here -->
+{% endblock %}

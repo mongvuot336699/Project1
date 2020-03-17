@@ -1,0 +1,68 @@
+{% extends "home/main/main.html" %}
+{% load static %}
+{% block content %}
+<!-- header here -->
+
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="title-section mb-5 col-12">
+            <h2 class="text-uppercase">Popular Products</h2>
+          </div>
+        </div>
+        <div class="row">
+
+          {% for item in object_list %}
+          <div class="col-lg-4 col-md-6 item-entry mb-4">
+            <a href="{{ item.get_absolute_url }}" class="product-item md-height bg-gray d-block">
+              <img src='{{item.image.url}}' alt="Image" class="img-fluid">
+            </a>
+            <h2 class="item-title"><a href="{{ item.get_absolute_url }}">{{item.title}}</a></h2>
+            <strong class="item-price">{{item.price}}</strong>
+          </div>
+          {% endfor %}
+        </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div class="site-block-27">
+              {% if object_list.has_other_pages %}
+                <ul>
+                  {% if object_list.has_previous %}
+                    <li><a href="?page={{ object_list.previous_page_number }}">&lt;</a></li>
+                  {% else %}
+                    <li>&lt;</li>
+                  {% endif %}
+
+                  {% for num in object_list.paginator.page_range %}
+                    {% if object_list.number == num %}
+                      <li class="active"><span>{{ num }}</span></li>
+                    {% else %}
+                      <li><a href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if trang.has_next %}
+                    <li><a href="?page={{ object_list.next_page_number }}">&gt;</a></li>
+                  {% else %}
+                    <li>&gt;</li>
+                  {% endif %}
+                </ul>
+              {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Popular Products -->
+
+
+
+
+
+<!-- section here -->
+{% endblock %}
